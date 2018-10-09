@@ -20,14 +20,16 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public decimal nombre;
-        public decimal nombreStocke;
-        string operationCourante;
+        private static string plus = "+";
+        private static string moins = "-";
+        private static string multiplier = "*";
+        private static string diviser = "/";
 
-        static string plus = "+";
-        static string moins = "-";
-        static string multiplier = "*";
-        static string diviser = "/";
+        private double nombreCourant;
+        private double nombreStocke;
+        string operationCourante;
+        private bool virgule;
+        private int nb0;
 
 
         public MainWindow()
@@ -35,9 +37,11 @@ namespace WpfApp1
             InitializeComponent();
 
             zoneResult.Text = "0";
-            nombre = 0;
+            nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = plus;
+            virgule = false;
+            nb0 = 0;
         }
 
         private void ClearZero()
@@ -48,133 +52,192 @@ namespace WpfApp1
 
         private void Button_0(object sender, RoutedEventArgs e)
         {
-            if (nombre != 0)
+            if (!virgule)
+                nombreCourant *= 10;
+            else
             {
-                nombre *= 10;
-                zoneResult.Text = nombre.ToString();
+                nb0++;
+                //TODO
             }
-
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_1(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 1;
-            zoneResult.Text = nombre.ToString();
-
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 1;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 1*Math.Pow(10,-nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_2(object sender, RoutedEventArgs e)
         {
-
             ClearZero();
-            nombre = nombre * 10 + 2;
-            zoneResult.Text = nombre.ToString();
-
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 2;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 2 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_3(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 3;
-            zoneResult.Text = nombre.ToString();
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 3;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 3 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_4(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 4;
-            zoneResult.Text = nombre.ToString();
-
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 4;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 4 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_5(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 5;
-            zoneResult.Text = nombre.ToString();
-
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 5;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 5 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_6(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 6;
-            zoneResult.Text = nombre.ToString();
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 6;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 6 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_7(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 7;
-            zoneResult.Text = nombre.ToString();
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 7;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 7 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_8(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 8;
-            zoneResult.Text = nombre.ToString();
-
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 8;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 8 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
         private void Button_9(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre = nombre * 10 + 9;
-            zoneResult.Text = nombre.ToString();
-
+            if (!virgule)
+                nombreCourant = nombreCourant * 10 + 9;
+            else
+            {
+                nb0++;
+                nombreCourant = nombreCourant + 9 * Math.Pow(10, -nb0);
+            }
+            zoneResult.Text = nombreCourant.ToString();
         }
 
         private void Button_ce(object sender, RoutedEventArgs e)
         {
             zoneResult.Text = "0";
-            nombre = 0;
+            nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = plus;
+            virgule = false;
+            nb0 = 0;
         }
 
         private void Button_plus(object sender, RoutedEventArgs e)
         {
             Calcul();
             operationCourante = plus;
+            virgule = false;
+            nb0 = 0;
         }
+
         private void Button_moins(object sender, RoutedEventArgs e)
         {
             Calcul();
             operationCourante = moins;
+            virgule = false;
+            nb0 = 0;
         }
+
         private void Button_multiplier(object sender, RoutedEventArgs e)
         {
             Calcul();
             operationCourante = multiplier;
+            virgule = false;
+            nb0 = 0;
         }
+
         private void Button_diviser(object sender, RoutedEventArgs e)
         {
             Calcul();
             operationCourante = diviser;
+            virgule = false;
+            nb0 = 0;
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
         {
             Calcul();
             operationCourante = plus;
+            virgule = false;
+            nb0 = 0;
         }
 
-        private void Button_virgule(object sender, RoutedEventArgs e) { }
+        private void Button_virgule(object sender, RoutedEventArgs e)
+        {
+            virgule = true;
+        }
 
         private void Calcul()
         {
             if (operationCourante == plus)
-                nombreStocke += nombre;
+                nombreStocke += nombreCourant;
             else if (operationCourante == moins)
-                nombreStocke -= nombre;
+                nombreStocke -= nombreCourant;
             else if (operationCourante == multiplier)
-                nombreStocke *= nombre;
+                nombreStocke *= nombreCourant;
             else if (operationCourante == diviser)
-                nombreStocke /= nombre;
+                nombreStocke /= nombreCourant;
 
             zoneResult.Text = nombreStocke.ToString();
-            nombre = 0;
+            nombreCourant = 0;
         }
     }
 }
