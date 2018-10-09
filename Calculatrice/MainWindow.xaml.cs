@@ -20,10 +20,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        static string[] reponse = new string[10];
         public decimal nombre;
         public decimal nombreStocke;
-        public string strNombre;
         public string strNombreStocke;
         string operationCourante;
 
@@ -40,7 +38,6 @@ namespace WpfApp1
             zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
-            strNombre = "";
             strNombreStocke = "";
             operationCourante = plus;
         }
@@ -53,18 +50,18 @@ namespace WpfApp1
 
         private void Button_0(object sender, RoutedEventArgs e)
         {
-            if (strNombre != "0")
+            if (nombre != 0)
             {
-                strNombre += "0";
-                zoneResult.Text = strNombre;
+                nombre *= 10;
+                zoneResult.Text = nombre.ToString();
             }
 
         }
         private void Button_1(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "1";
-            zoneResult.Text = strNombre;
+            nombre =nombre * 10 + 1;
+            zoneResult.Text = nombre.ToString();
 
 
         }
@@ -72,61 +69,61 @@ namespace WpfApp1
         {
 
             ClearZero();
-            strNombre += "2";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 2;
+            zoneResult.Text = nombre.ToString();
 
 
         }
         private void Button_3(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "3";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 3;
+            zoneResult.Text = nombre.ToString();
 
         }
         private void Button_4(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "4";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 4;
+            zoneResult.Text = nombre.ToString();
 
 
         }
         private void Button_5(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "5";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 5;
+            zoneResult.Text = nombre.ToString();
 
 
         }
         private void Button_6(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "6";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 6;
+            zoneResult.Text = nombre.ToString();
 
         }
         private void Button_7(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "7";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 7;
+            zoneResult.Text = nombre.ToString();
 
         }
         private void Button_8(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "8";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 8;
+            zoneResult.Text = nombre.ToString();
 
 
         }
         private void Button_9(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            strNombre += "9";
-            zoneResult.Text = strNombre;
+            nombre = nombre * 10 + 9;
+            zoneResult.Text = nombre.ToString();
 
         }
 
@@ -135,7 +132,6 @@ namespace WpfApp1
             zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
-            strNombre = "";
             strNombreStocke = "";
             operationCourante = plus;
         }
@@ -145,7 +141,6 @@ namespace WpfApp1
             Calcul();
             operationCourante = plus;
         }
-
         private void Button_moins(object sender, RoutedEventArgs e)
         {
             Calcul();
@@ -162,9 +157,6 @@ namespace WpfApp1
             operationCourante = diviser;
         }
 
-
-        
-
         private void Button_egal(object sender, RoutedEventArgs e)
         {
             Calcul();
@@ -175,12 +167,6 @@ namespace WpfApp1
 
         private void Calcul()
         {
-            int nbtemp;
-            if (Int32.TryParse(strNombre, out nbtemp))
-                nombre = nbtemp;
-            else
-                nombre = 0;
-
             if (operationCourante == plus)
                 nombreStocke += nombre;
             else if (operationCourante == moins)
@@ -190,10 +176,7 @@ namespace WpfApp1
             else if (operationCourante == diviser)
                 nombreStocke /= nombre;
 
-            nombre = nombreStocke;
-            strNombre = nombre.ToString();
-            zoneResult.Text = strNombre;
-            strNombre = "";
+            zoneResult.Text = nombreStocke.ToString();
             nombre = 0;
         }
     }
