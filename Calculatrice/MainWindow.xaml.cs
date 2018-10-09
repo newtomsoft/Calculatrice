@@ -36,16 +36,6 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            reponse[0] = "Le ciel est bleu";
-            reponse[1] = "L'eau ça mouille";
-            reponse[2] = "Il n'y a pas de sots métiers, il n'y a que de sottes gens";
-            reponse[3] = "Patience surpasse science";
-            reponse[4] = "Mieux vaut suer que trembler";
-            reponse[5] = "Lorsque les canards et les oies crient et plongent dans l'eau, c'est signe de pluie";
-            reponse[6] = "Quand les brebis secouent leurs cloches l'on peut dire que la pluie est proche";
-            reponse[7] = "Pie dans la ferme, neige à court terme";
-            reponse[8] = "A sotte demande, à folle demande, point de réponse";
-            reponse[9] = "Il faut avoir deux cordes à son arc";
 
             zoneResult.Text = "0";
             nombre = 0;
@@ -60,14 +50,6 @@ namespace WpfApp1
             zoneResult.Text = "";
 
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Random rnd = new Random();
-            int mIndex = rnd.Next(reponse.Length);
-            //MessageBox.Show(reponse[mIndex]);
-            //letexte.Text = reponse[mIndex];
-        }
-
 
         private void Button_0(object sender, RoutedEventArgs e)
         {
@@ -160,30 +142,40 @@ namespace WpfApp1
 
         private void Button_plus(object sender, RoutedEventArgs e)
         {
-            Egal();
+            Calcul();
             operationCourante = plus;
         }
 
         private void Button_moins(object sender, RoutedEventArgs e)
         {
-            Egal();
+            Calcul();
             operationCourante = moins;
         }
         private void Button_multiplier(object sender, RoutedEventArgs e)
         {
-            Egal();
+            Calcul();
             operationCourante = multiplier;
         }
         private void Button_diviser(object sender, RoutedEventArgs e)
         {
-            Egal();
+            Calcul();
             operationCourante = diviser;
         }
 
 
-        private void Egal()
+        
+
+        private void Button_egal(object sender, RoutedEventArgs e)
         {
-            int nbtemp = 0;
+            Calcul();
+            operationCourante = plus;
+        }
+
+        private void Button_virgule(object sender, RoutedEventArgs e) { }
+
+        private void Calcul()
+        {
+            int nbtemp;
             if (Int32.TryParse(strNombre, out nbtemp))
                 nombre = nbtemp;
             else
@@ -204,14 +196,5 @@ namespace WpfApp1
             strNombre = "";
             nombre = 0;
         }
-
-        private void Button_egal(object sender, RoutedEventArgs e)
-        {
-            Egal();
-            operationCourante = plus;
-        }
-
-        private void Button_virgule(object sender, RoutedEventArgs e) { }
-
     }
 }

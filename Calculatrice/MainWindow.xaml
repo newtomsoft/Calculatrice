@@ -17,17 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <TextBox Name="zoneResult" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="24" Margin="58,10,288,22">
-            <TextBox.Foreground>
-                <LinearGradientBrush>
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Offset="0.00" Color="Red" />
-                        <GradientStop Offset="0.50" Color="Indigo" />
-                        <GradientStop Offset="1.00" Color="Violet" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </TextBox.Foreground>
-        </TextBox>
+        <TextBox  TextAlignment="Right"  Name="zoneResult" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="28" Margin="107,10,239,22"/>
 
         <Button Grid.Row="1" Content="CE" Click="Button_ce" Margin="107,10,971,106" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="1" Content="*" Click="Button_multiplier" Margin="595,10,483,106" Grid.RowSpan="2" FontSize="24"/>
