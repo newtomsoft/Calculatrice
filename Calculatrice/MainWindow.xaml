@@ -1,12 +1,59 @@
-﻿<Window x:Class="Calculatrice.MainWindow"
+﻿<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculatrice"
+        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<Button Margin="596,233,373,301" Content="Bouton 2" Click="Button_Click"/>-->
+
+        <TextBox Name="zoneTexte" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="24" Margin="58,10,288,22">
+            <TextBox.Foreground>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.00" Color="Red" />
+                        <GradientStop Offset="0.50" Color="Indigo" />
+                        <GradientStop Offset="1.00" Color="Violet" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </TextBox.Foreground>
+        </TextBox>
+
+        <Button Grid.Row="1" Content="CE" Click="Button_ce" Margin="107,10,971,106" Grid.RowSpan="2"/>
+        <Button Grid.Row="1" Content="*" Click="Button_multiplier" Margin="595,10,483,106" Grid.RowSpan="2"/>
+        <Button Grid.Row="1" Content="/" Click="Button_diviser" Margin="351,10,727,106" Grid.RowSpan="2"/>
+
+        <Button Grid.Row="2" Content="7" Click="Button_7" Margin="107,25,971,91" Grid.RowSpan="2"/>
+        <Button Grid.Row="2" Content="8" Click="Button_8" Margin="351,25,727,91" Grid.RowSpan="2"/>
+        <Button Grid.Row="2" Content="9" Click="Button_9" Margin="595,25,483,91" Grid.RowSpan="2"/>
+
+        <Button Grid.Row="3" Content="4" Click="Button_4" Margin="107,55,971,79" Grid.RowSpan="2"/>
+        <Button Grid.Row="3" Content="5" Click="Button_5" Margin="351,55,727,79" Grid.RowSpan="2"/>
+        <Button Grid.Row="3" Content="6" Click="Button_6" Margin="595,55,483,79" Grid.RowSpan="2"/>
+
+        <Button Grid.Row="4" Content="1" Click="Button_1" Margin="107,85,971,48" Grid.RowSpan="2"/>
+        <Button Grid.Row="4" Content="2" Click="Button_2" Margin="351,85,727,48" Grid.RowSpan="2"/>
+        <Button Grid.Row="4" Content="3" Click="Button_3" Margin="595,85,483,48" Grid.RowSpan="2"/>
+
+        <Button Grid.Row="6" Content="0" Click="Button_0" Margin="107,0,727,23"/>
+
+
+        <Button Grid.Row="1" Content="-" Click="Button_moins" Margin="839,10,239,106" Grid.RowSpan="2"/>
+        <Button Grid.Row="2" Content="+" Click="Button_plus" Margin="839,30,239,79" Grid.RowSpan="3"/>
+        <Button Grid.Row="4" Content="=" Click="Button_egal" Margin="839,85,239,23" Grid.RowSpan="3"/>
+        <Button Grid.Row="6" Content="." Click="Button_virgule" Margin="595,0,483,23"/>
         
+
     </Grid>
 </Window>
