@@ -22,7 +22,6 @@ namespace WpfApp1
     {
         public decimal nombre;
         public decimal nombreStocke;
-        public string strNombreStocke;
         string operationCourante;
 
         static string plus = "+";
@@ -38,7 +37,6 @@ namespace WpfApp1
             zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
-            strNombreStocke = "";
             operationCourante = plus;
         }
 
@@ -60,7 +58,7 @@ namespace WpfApp1
         private void Button_1(object sender, RoutedEventArgs e)
         {
             ClearZero();
-            nombre =nombre * 10 + 1;
+            nombre = nombre * 10 + 1;
             zoneResult.Text = nombre.ToString();
 
 
@@ -132,7 +130,6 @@ namespace WpfApp1
             zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
-            strNombreStocke = "";
             operationCourante = plus;
         }
 
