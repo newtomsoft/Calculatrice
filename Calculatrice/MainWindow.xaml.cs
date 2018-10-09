@@ -47,7 +47,7 @@ namespace WpfApp1
             reponse[8] = "A sotte demande, à folle demande, point de réponse";
             reponse[9] = "Il faut avoir deux cordes à son arc";
 
-            zoneTexte.Text = "0";
+            zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
             strNombre = "";
@@ -57,7 +57,7 @@ namespace WpfApp1
 
         private void ClearZero()
         {
-            zoneTexte.Text = "";
+            zoneResult.Text = "";
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -74,7 +74,7 @@ namespace WpfApp1
             if (strNombre != "0")
             {
                 strNombre += "0";
-                zoneTexte.Text = strNombre;
+                zoneResult.Text = strNombre;
             }
 
         }
@@ -82,7 +82,7 @@ namespace WpfApp1
         {
             ClearZero();
             strNombre += "1";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
 
         }
@@ -91,7 +91,7 @@ namespace WpfApp1
 
             ClearZero();
             strNombre += "2";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
 
         }
@@ -99,14 +99,14 @@ namespace WpfApp1
         {
             ClearZero();
             strNombre += "3";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
         }
         private void Button_4(object sender, RoutedEventArgs e)
         {
             ClearZero();
             strNombre += "4";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
 
         }
@@ -114,7 +114,7 @@ namespace WpfApp1
         {
             ClearZero();
             strNombre += "5";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
 
         }
@@ -122,21 +122,21 @@ namespace WpfApp1
         {
             ClearZero();
             strNombre += "6";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
         }
         private void Button_7(object sender, RoutedEventArgs e)
         {
             ClearZero();
             strNombre += "7";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
         }
         private void Button_8(object sender, RoutedEventArgs e)
         {
             ClearZero();
             strNombre += "8";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
 
         }
@@ -144,13 +144,13 @@ namespace WpfApp1
         {
             ClearZero();
             strNombre += "9";
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
 
         }
 
         private void Button_ce(object sender, RoutedEventArgs e)
         {
-            zoneTexte.Text = "0";
+            zoneResult.Text = "0";
             nombre = 0;
             nombreStocke = 0;
             strNombre = "";
@@ -200,7 +200,7 @@ namespace WpfApp1
 
             nombre = nombreStocke;
             strNombre = nombre.ToString();
-            zoneTexte.Text = strNombre;
+            zoneResult.Text = strNombre;
             strNombre = "";
             nombre = 0;
         }

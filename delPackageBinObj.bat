@@ -1,0 +1,6 @@
+@echo off
+@echo Deleting all BIN and OBJ folders...
+start for /d /r . %%d in (bin,obj) do @if exist "%%d" rd /s/q "%%d"
+@echo Deleting packages...
+rd /q /s packages
+@echo packages, BIN and OBJ folders successfully deleted :) Close the window.
