@@ -65,6 +65,15 @@ namespace Calculatrice
             }
             zoneResult.Text = nombreCourant.ToString();
 
+            if (chiffre == 0 && nb0>0)
+            {
+                zoneResult.Text += ",";
+                for (int i = 0; i < nb0; i++)
+                {
+                    zoneResult.Text += "0";
+
+                }
+            }
 
         }
 
