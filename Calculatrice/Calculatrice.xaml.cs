@@ -36,13 +36,13 @@ namespace Calculatrice
         public Calc()
         {
             InitializeComponent();
-            op_plus = additionner.Name;
-            op_moins = soustraire.Name;
-            op_multiplier = multiplier.Name;
-            op_diviser = diviser.Name;
+            op_plus = Additionner.Name;
+            op_moins = Soustraire.Name;
+            op_multiplier = Multiplier.Name;
+            op_diviser = Diviser.Name;
             op_rien = "rien";
 
-            zoneResult.Text = "0";
+            Ecran.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -53,7 +53,7 @@ namespace Calculatrice
 
         private void ClearZero()
         {
-            zoneResult.Text = "";
+            Ecran.Text = "";
 
         }
 
@@ -67,7 +67,7 @@ namespace Calculatrice
         {
 
             nbChiffre++;
-            int TexteLongueur = zoneResult.Text.Length;
+            int TexteLongueur = Ecran.Text.Length;
 
             ClearZero();
             if (!virgule)
@@ -77,23 +77,23 @@ namespace Calculatrice
                 nb0++;
                 nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
             }
-            zoneResult.Text = nombreCourant.ToString();
+            Ecran.Text = nombreCourant.ToString();
 
             if (chiffre == 0 && nb0 > 0)
             {
-                if (!zoneResult.Text.Contains(","))
-                    zoneResult.Text += ",";
+                if (!Ecran.Text.Contains(","))
+                    Ecran.Text += ",";
 
 
                 for (int i = 0; i < TexteLongueur - nbChiffre + 1; i++)
-                    zoneResult.Text += "0";
+                    Ecran.Text += "0";
             }
         }
 
 
         private void Button_ce(object sender, RoutedEventArgs e)
         {
-            zoneResult.Text = "0";
+            Ecran.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -133,7 +133,7 @@ namespace Calculatrice
         private void Virgule()
         {
             if (!virgule)
-                zoneResult.Text += ",";
+                Ecran.Text += ",";
             virgule = true;
 
         }
@@ -142,7 +142,7 @@ namespace Calculatrice
         {
             ClearZero();
             nombreCourant = nombreCourant * -1;
-            zoneResult.Text = nombreCourant.ToString();
+            Ecran.Text = nombreCourant.ToString();
         }
 
         private void Operation()
@@ -158,7 +158,7 @@ namespace Calculatrice
             else if (operationCourante == op_rien)
                 nombreStocke = nombreCourant;
 
-            zoneResult.Text = nombreStocke.ToString();
+            Ecran.Text = nombreStocke.ToString();
             nombreCourant = 0;
         }
 
@@ -169,7 +169,7 @@ namespace Calculatrice
         private void Pourcent()
         {
             nombreCourant *= nombreStocke / 100;
-            zoneResult.Text = nombreCourant.ToString();
+            Ecran.Text = nombreCourant.ToString();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
