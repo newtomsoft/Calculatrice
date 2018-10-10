@@ -31,7 +31,7 @@ namespace Calculatrice
         string operationCourante;
         private bool virgule;
         private int nb0;
-
+        private int nbChiffre;
 
         public Calc()
         {
@@ -48,6 +48,7 @@ namespace Calculatrice
             operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
+            nbChiffre = 0;
         }
 
         private void ClearZero()
@@ -59,6 +60,14 @@ namespace Calculatrice
         private void BoutonChiffre(object sender, RoutedEventArgs e)
         {
             int chiffre = Int32.Parse(((Button)sender).Content.ToString());
+            Chiffre(chiffre);
+        }
+
+        private void Chiffre(int chiffre)
+        {
+
+            nbChiffre++;
+            int TexteLongueur = zoneResult.Text.Length;
 
             ClearZero();
             if (!virgule)
@@ -70,14 +79,17 @@ namespace Calculatrice
             }
             zoneResult.Text = nombreCourant.ToString();
 
-            if (chiffre == 0 && nb0>0)
+            if (chiffre == 0 && nb0 > 0)
             {
-                zoneResult.Text += ",";
-                for (int i = 0; i < nb0; i++)
+                if (!zoneResult.Text.Contains(","))
+                    zoneResult.Text += ",";
+
+
+                for (int i = 0; i < TexteLongueur - nbChiffre + 1; i++)
                     zoneResult.Text += "0";
             }
-
         }
+
 
         private void Button_ce(object sender, RoutedEventArgs e)
         {
@@ -87,27 +99,43 @@ namespace Calculatrice
             operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
+            nbChiffre = 0;
         }
 
-        private void Bouton_calcul(object sender, RoutedEventArgs e)
+        private void Bouton_operation(object sender, RoutedEventArgs e)
         {
-            Calcul();
+            Operation();
             operationCourante = ((Button)sender).Name.ToString();
             virgule = false;
             nb0 = 0;
+            nbChiffre = 0;
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
         {
-            Calcul();
+            Egal();
+        }
+
+        private void Egal()
+        {
+            Operation();
             operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
+            nbChiffre = 0;
+
         }
 
         private void Button_virgule(object sender, RoutedEventArgs e)
         {
+            Virgule();
+        }
+        private void Virgule()
+        {
+            if (!virgule)
+                zoneResult.Text += ",";
             virgule = true;
+
         }
 
         private void Button_plusmoins(object sender, RoutedEventArgs e)
@@ -117,7 +145,7 @@ namespace Calculatrice
             zoneResult.Text = nombreCourant.ToString();
         }
 
-        private void Calcul()
+        private void Operation()
         {
             if (operationCourante == op_plus)
                 nombreStocke += nombreCourant;
@@ -134,12 +162,59 @@ namespace Calculatrice
             nombreCourant = 0;
         }
 
-
-
         private void Button_pourcent(object sender, RoutedEventArgs e)
         {
             nombreCourant = nombreStocke * nombreCourant / 100;
             zoneResult.Text = nombreCourant.ToString();
+        }
+
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key > Key.NumPad0 && e.Key < Key.NumPad9)
+            {
+                Chiffre(e.Key - Key.NumPad0);
+            }
+            if (e.Key == Key.Subtract)
+            {
+                Operation();
+                operationCourante = op_moins;
+                virgule = false;
+                nb0 = 0;
+                nbChiffre = 0;
+            }
+            if (e.Key == Key.Decimal)
+            {
+                Virgule();
+            }
+            if (e.Key == Key.Divide)
+            {
+                Operation();
+                operationCourante = op_diviser;
+                virgule = false;
+                nb0 = 0;
+                nbChiffre = 0;
+            }
+            if (e.Key == Key.Multiply)
+            {
+                Operation();
+                operationCourante = op_multiplier;
+                virgule = false;
+                nb0 = 0;
+                nbChiffre = 0;
+            }
+            if (e.Key == Key.Add)
+            {
+                Operation();
+                operationCourante = op_plus;
+                virgule = false;
+                nb0 = 0;
+                nbChiffre = 0;
+            }
+            if (e.Key == Key.Enter)
+            {
+                Egal();
+            }
         }
 
     }
