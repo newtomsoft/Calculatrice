@@ -69,10 +69,7 @@ namespace Calculatrice
             {
                 zoneResult.Text += ",";
                 for (int i = 0; i < nb0; i++)
-                {
                     zoneResult.Text += "0";
-
-                }
             }
 
         }
