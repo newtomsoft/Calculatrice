@@ -164,10 +164,13 @@ namespace Calculatrice
 
         private void Button_pourcent(object sender, RoutedEventArgs e)
         {
-            nombreCourant = nombreStocke * nombreCourant / 100;
+            Pourcent();
+        }
+        private void Pourcent()
+        {
+            nombreCourant *= nombreStocke / 100;
             zoneResult.Text = nombreCourant.ToString();
         }
-
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -215,6 +218,7 @@ namespace Calculatrice
             {
                 Egal();
             }
+            //if (e.Key == Key.)
         }
 
     }

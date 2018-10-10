@@ -17,27 +17,27 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox  TextAlignment="Right"  Name="zoneResult" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="28" Margin="107,10,239,22"/>
+        <TextBox  TextAlignment="Right"  Name="zoneResult" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="36" Margin="107,24,239,37"/>
 
         <Button Grid.Row="1" Content="CE" Click="Button_ce" Margin="107,10,971,106" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="1" Content="+/-" Click="Button_plusmoins" Margin="351,10,727,106" Grid.RowSpan="2" FontSize="24"/>
-        <Button x:Name="pourcent" Grid.Row="1" Content="%" Click="Button_pourcent" Margin="595,10,483,106" Grid.RowSpan="2" FontSize="24"/>
-        <Button x:Name="diviser" Grid.Row="1" Content="/" Click="Bouton_operation" Margin="839,10,239,106" Grid.RowSpan="2" FontSize="24"/>
+        <Button Name="pourcent" Grid.Row="1" Content="%" Click="Button_pourcent" Margin="595,10,483,106" Grid.RowSpan="2" FontSize="24"/>
+        <Button Name="diviser" Grid.Row="1" Content="/" Click="Bouton_operation" Margin="839,10,239,106" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="2" Content="7" Click="BoutonChiffre" Margin="107,25,971,91" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="2" Content="8" Click="BoutonChiffre" Margin="351,25,727,91" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="2" Content="9" Click="BoutonChiffre" Margin="595,25,483,91" Grid.RowSpan="2" FontSize="24"/>
-        <Button x:Name="multiplier" Grid.Row="2" Content="*" Click="Bouton_operation" Margin="839,25,239,91" Grid.RowSpan="2" FontSize="24"/>
+        <Button Name="multiplier" Grid.Row="2" Content="*" Click="Bouton_operation" Margin="839,25,239,91" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="3" Content="4" Click="BoutonChiffre" Margin="107,55,971,79" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="3" Content="5" Click="BoutonChiffre" Margin="351,55,727,79" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="3" Content="6" Click="BoutonChiffre" Margin="595,55,483,79" Grid.RowSpan="2" FontSize="24"/>
-        <Button x:Name="soustraire" Grid.Row="3" Content="-" Click="Bouton_operation" Margin="839,55,239,61" Grid.RowSpan="2" FontSize="24"/>
+        <Button Name="soustraire" Grid.Row="3" Content="-" Click="Bouton_operation" Margin="839,55,239,61" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="4" Content="1" Click="BoutonChiffre" Margin="107,85,971,48" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="4" Content="2" Click="BoutonChiffre" Margin="351,85,727,48" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="4" Content="3" Click="BoutonChiffre" Margin="595,85,483,48" Grid.RowSpan="2" FontSize="24"/>
-        <Button x:Name="additionner" Grid.Row="4" Content="+" Click="Bouton_operation" Margin="839,85,239,49" Grid.RowSpan="2" FontSize="24"/>
+        <Button Name="additionner" Grid.Row="4" Content="+" Click="Bouton_operation" Margin="839,85,239,49" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="6" Content="0" Click="BoutonChiffre" Margin="107,0,727,23" FontSize="24"/>
         <Button Grid.Row="6" Content="," Click="Button_virgule" Margin="595,0,483,23" FontSize="24"/>
