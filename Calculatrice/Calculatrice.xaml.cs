@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace Calculatrice
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Calc : Window
     {
         private static string plus = "+";
         private static string moins = "-";
@@ -32,7 +32,7 @@ namespace WpfApp1
         private int nb0;
 
 
-        public MainWindow()
+        public Calc()
         {
             InitializeComponent();
 
