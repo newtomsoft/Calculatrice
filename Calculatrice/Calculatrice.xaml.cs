@@ -36,13 +36,11 @@ namespace Calculatrice
         public Calc()
         {
             InitializeComponent();
-
-            op_plus = (string) additionner.Name;
-            op_moins = (string)soustraire.Name;
-            op_multiplier = (string)multiplier.Name;
-            op_diviser = (string)diviser.Name;
+            op_plus = additionner.Name;
+            op_moins = soustraire.Name;
+            op_multiplier = multiplier.Name;
+            op_diviser = diviser.Name;
             op_rien = "rien";
-
 
             zoneResult.Text = "0";
             nombreCourant = 0;
@@ -91,34 +89,10 @@ namespace Calculatrice
             nb0 = 0;
         }
 
-        private void Button_plus(object sender, RoutedEventArgs e)
+        private void Bouton_calcul(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = op_plus;
-            virgule = false;
-            nb0 = 0;
-        }
-
-        private void Button_moins(object sender, RoutedEventArgs e)
-        {
-            Calcul();
-            operationCourante = op_moins;
-            virgule = false;
-            nb0 = 0;
-        }
-
-        private void Button_multiplier(object sender, RoutedEventArgs e)
-        {
-            Calcul();
-            operationCourante = op_multiplier;
-            virgule = false;
-            nb0 = 0;
-        }
-
-        private void Button_diviser(object sender, RoutedEventArgs e)
-        {
-            Calcul();
-            operationCourante = op_diviser;
+            operationCourante = ((Button)sender).Name.ToString();
             virgule = false;
             nb0 = 0;
         }
