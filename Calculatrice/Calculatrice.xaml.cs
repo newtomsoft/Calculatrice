@@ -53,8 +53,7 @@ namespace Calculatrice
 
         private void BoutonChiffre(object sender, RoutedEventArgs e)
         {
-            var t = (Button)sender;
-            int chiffre = Int32.Parse(t.Content.ToString());
+            int chiffre = Int32.Parse(((Button)sender).Content.ToString());
 
             ClearZero();
             if (!virgule)
@@ -65,6 +64,8 @@ namespace Calculatrice
                 nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
             }
             zoneResult.Text = nombreCourant.ToString();
+
+
         }
 
         private void Button_ce(object sender, RoutedEventArgs e)
