@@ -69,7 +69,7 @@ namespace Calculatrice
             else
             {
                 nb0++;
-                nombreCourant = nombreCourant + 1*Math.Pow(10,-nb0);
+                nombreCourant = nombreCourant + 1 * Math.Pow(10, -nb0);
             }
             zoneResult.Text = nombreCourant.ToString();
         }
@@ -225,6 +225,14 @@ namespace Calculatrice
             virgule = true;
         }
 
+        private void Button_plusmoins(object sender, RoutedEventArgs e)
+        {
+            ClearZero();
+            nombreCourant = nombreCourant * -1;
+
+            zoneResult.Text = nombreCourant.ToString();
+        }
+
         private void Calcul()
         {
             if (operationCourante == plus)
@@ -239,5 +247,14 @@ namespace Calculatrice
             zoneResult.Text = nombreStocke.ToString();
             nombreCourant = 0;
         }
+
+
+
+        private void Button_pourcent(object sender, RoutedEventArgs e)
+        {
+            nombreCourant = nombreStocke * nombreCourant / 100;
+            zoneResult.Text = nombreCourant.ToString();
+        }
+
     }
 }

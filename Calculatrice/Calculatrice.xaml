@@ -16,32 +16,33 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <TextBox  TextAlignment="Right"  Name="zoneResult" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="28" Margin="107,10,239,22"/>
 
         <Button Grid.Row="1" Content="CE" Click="Button_ce" Margin="107,10,971,106" Grid.RowSpan="2" FontSize="24"/>
-        <Button Grid.Row="1" Content="*" Click="Button_multiplier" Margin="595,10,483,106" Grid.RowSpan="2" FontSize="24"/>
-        <Button Grid.Row="1" Content="/" Click="Button_diviser" Margin="351,10,727,106" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="1" Content="+/-" Click="Button_plusmoins" Margin="351,10,727,106" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="1" Content="%" Click="Button_pourcent" Margin="595,10,483,106" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="1" Content="/" Click="Button_diviser" Margin="839,10,239,106" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="2" Content="7" Click="Button_7" Margin="107,25,971,91" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="2" Content="8" Click="Button_8" Margin="351,25,727,91" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="2" Content="9" Click="Button_9" Margin="595,25,483,91" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="2" Content="*" Click="Button_multiplier" Margin="839,25,239,91" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="3" Content="4" Click="Button_4" Margin="107,55,971,79" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="3" Content="5" Click="Button_5" Margin="351,55,727,79" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="3" Content="6" Click="Button_6" Margin="595,55,483,79" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="3" Content="-" Click="Button_moins" Margin="839,55,239,61" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="4" Content="1" Click="Button_1" Margin="107,85,971,48" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="4" Content="2" Click="Button_2" Margin="351,85,727,48" Grid.RowSpan="2" FontSize="24"/>
         <Button Grid.Row="4" Content="3" Click="Button_3" Margin="595,85,483,48" Grid.RowSpan="2" FontSize="24"/>
+        <Button Grid.Row="4" Content="+" Click="Button_plus" Margin="839,85,239,49" Grid.RowSpan="2" FontSize="24"/>
 
         <Button Grid.Row="6" Content="0" Click="Button_0" Margin="107,0,727,23" FontSize="24"/>
         <Button Grid.Row="6" Content="." Click="Button_virgule" Margin="595,0,483,23" FontSize="24"/>
+        <Button Grid.Row="6" Content="=" Click="Button_egal" Margin="839,0,239,23" FontSize="24"/>
 
-        <Button Grid.Row="1" Content="-" Click="Button_moins" Margin="839,10,239,106" Grid.RowSpan="2" FontSize="24"/>
-        <Button Grid.Row="2" Content="+" Click="Button_plus" Margin="839,30,239,79" Grid.RowSpan="3" FontSize="24"/>
-        <Button Grid.Row="4" Content="=" Click="Button_egal" Margin="839,85,239,23" Grid.RowSpan="3" FontSize="24"/>
-       
 
     </Grid>
 </Window>
