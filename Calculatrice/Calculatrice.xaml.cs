@@ -20,11 +20,11 @@ namespace Calculatrice
     /// </summary>
     public partial class Calc : Window
     {
-        private static string plus = "+";
-        private static string moins = "-";
-        private static string multiplier = "*";
-        private static string diviser = "/";
-        private static string rien = "";
+        private string op_plus;
+        private string op_moins;
+        private string op_multiplier;
+        private string op_diviser;
+        private string op_rien;
 
         private double nombreCourant;
         private double nombreStocke;
@@ -37,10 +37,17 @@ namespace Calculatrice
         {
             InitializeComponent();
 
+            op_plus = (string) additionner.Name;
+            op_moins = (string)soustraire.Name;
+            op_multiplier = (string)multiplier.Name;
+            op_diviser = (string)diviser.Name;
+            op_rien = "rien";
+
+
             zoneResult.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
-            operationCourante = rien;
+            operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
         }
@@ -79,7 +86,7 @@ namespace Calculatrice
             zoneResult.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
-            operationCourante = rien;
+            operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
         }
@@ -87,7 +94,7 @@ namespace Calculatrice
         private void Button_plus(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = plus;
+            operationCourante = op_plus;
             virgule = false;
             nb0 = 0;
         }
@@ -95,7 +102,7 @@ namespace Calculatrice
         private void Button_moins(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = moins;
+            operationCourante = op_moins;
             virgule = false;
             nb0 = 0;
         }
@@ -103,7 +110,7 @@ namespace Calculatrice
         private void Button_multiplier(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = multiplier;
+            operationCourante = op_multiplier;
             virgule = false;
             nb0 = 0;
         }
@@ -111,7 +118,7 @@ namespace Calculatrice
         private void Button_diviser(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = diviser;
+            operationCourante = op_diviser;
             virgule = false;
             nb0 = 0;
         }
@@ -119,7 +126,7 @@ namespace Calculatrice
         private void Button_egal(object sender, RoutedEventArgs e)
         {
             Calcul();
-            operationCourante = rien;
+            operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
         }
@@ -138,15 +145,15 @@ namespace Calculatrice
 
         private void Calcul()
         {
-            if (operationCourante == plus)
+            if (operationCourante == op_plus)
                 nombreStocke += nombreCourant;
-            else if (operationCourante == moins)
+            else if (operationCourante == op_moins)
                 nombreStocke -= nombreCourant;
-            else if (operationCourante == multiplier)
+            else if (operationCourante == op_multiplier)
                 nombreStocke *= nombreCourant;
-            else if (operationCourante == diviser)
+            else if (operationCourante == op_diviser)
                 nombreStocke /= nombreCourant;
-            else if (operationCourante == rien)
+            else if (operationCourante == op_rien)
                 nombreStocke = nombreCourant;
 
             zoneResult.Text = nombreStocke.ToString();
