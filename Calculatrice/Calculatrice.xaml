@@ -10,7 +10,7 @@
         <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Margin="10" >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" ></RowDefinition>
+                    <RowDefinition Height="1.2*" ></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="Ecran" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="2" FontSize="50" />
+                <TextBox Name="Ecran" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="2" FontSize="50" TextAlignment="Right"/>
 
                 <Button Content="CE" Click="Button_ce" Grid.Row="1" Grid.Column="0" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="20" />
                 <Button Content="+/-" Click="Button_plusmoins" Grid.Row="1" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
