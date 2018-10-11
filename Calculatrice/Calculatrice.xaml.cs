@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Calculatrice
         private string op_multiplier;
         private string op_diviser;
         private string op_rien;
-
+        
         private string symbole_plus;
         private string symbole_moins;
         private string symbole_multiplier;
@@ -34,10 +35,11 @@ namespace Calculatrice
 
         private double nombreCourant;
         private double nombreStocke;
-        string operationCourante;
+        private string operationCourante;
         private bool virgule;
         private int nb0;
         private int nbChiffre;
+        private string operationAAficher;
 
         public Calc()
         {
@@ -47,6 +49,7 @@ namespace Calculatrice
             op_multiplier = Multiplier.Name;
             op_diviser = Diviser.Name;
             op_rien = "rien";
+
             symbole_plus = "+";
             symbole_moins = "-";
             symbole_multiplier = "x";
@@ -148,11 +151,11 @@ namespace Calculatrice
 
         private void Operation()
         {
-            if (operationCourante == op_plus)  nombreStocke += nombreCourant;
-            else if (operationCourante == op_moins)  nombreStocke -= nombreCourant;
-            else if (operationCourante == op_multiplier)  nombreStocke *= nombreCourant;
-            else if (operationCourante == op_diviser)  nombreStocke /= nombreCourant;
-            else if (operationCourante == op_rien)  nombreStocke = nombreCourant;
+                if (operationCourante == op_plus) nombreStocke += nombreCourant;
+                else if (operationCourante == op_moins) nombreStocke -= nombreCourant;
+                else if (operationCourante == op_multiplier) nombreStocke *= nombreCourant;
+                else if (operationCourante == op_diviser) nombreStocke /= nombreCourant;
+                else if (operationCourante == op_rien) nombreStocke = Double.Parse(EcranChiffres.Text);
 
             EcranChiffres.Text = nombreStocke.ToString();
             nombreCourant = 0;
@@ -231,6 +234,12 @@ namespace Calculatrice
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
+        }
+
+        void OperationAAficher()
+        {
+            operationAAficher = nombreStocke + " " + operationCourante + " " + nombreCourant + " =";
+            AfficheEcranOperation(operationAAficher);
         }
     }
 }
