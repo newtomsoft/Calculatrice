@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="Calculatrice" Height="600" Width="400" KeyDown="Window_KeyDown">
+        Title="Calculatrice" Height="480" Width="320" KeyDown="Window_KeyDown">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Margin="10" >
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" ></RowDefinition>
                     <RowDefinition Height="1.2*" ></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
@@ -24,31 +25,32 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="Ecran" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="2" FontSize="50" TextAlignment="Right"/>
+                <TextBox Name="EcranOperation" Text="+" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="2" FontSize="20" TextAlignment="Right"/>
+                <TextBox Name="EcranChiffres" Text="0" Grid.Row="1"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="2" FontSize="50" TextAlignment="Right"/>
 
-                <Button Content="CE" Click="Button_ce" Grid.Row="1" Grid.Column="0" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="20" />
-                <Button Content="+/-" Click="Button_plusmoins" Grid.Row="1" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Content="%" Click="Button_pourcent" Name="pourcent" Grid.Row="1" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Name="Diviser" Content="/" Click="Bouton_operation" Grid.Row="1" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="CE" Click="Button_ce" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="20" />
+                <Button Content="+/-" Click="Button_plusmoins" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="%" Click="Button_pourcent" Name="pourcent" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Name="Diviser" Content="/" Click="Bouton_operation" Grid.Row="2" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
-                <Button Content="7" Click="BoutonChiffre" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="8" Click="BoutonChiffre" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
-                <Button Content="9" Click="BoutonChiffre" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Name="Multiplier" Click="Bouton_operation" Grid.Row="2" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20" Content="x"/>
+                <Button Content="7" Click="BoutonChiffre" Grid.Row="3" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="8" Click="BoutonChiffre" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
+                <Button Content="9" Click="BoutonChiffre" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Name="Multiplier" Click="Bouton_operation" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20" Content="x"/>
 
-                <Button Content="4" Click="BoutonChiffre" Grid.Row="3" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="5" Click="BoutonChiffre" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
-                <Button Content="6" Click="BoutonChiffre" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="-" Name="Soustraire" Click="Bouton_operation" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="4" Click="BoutonChiffre" Grid.Row="4" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="5" Click="BoutonChiffre" Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
+                <Button Content="6" Click="BoutonChiffre" Grid.Row="4" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="-" Name="Soustraire" Click="Bouton_operation" Grid.Row="4" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
-                <Button Content="1" Click="BoutonChiffre" Grid.Row="4" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="2" Click="BoutonChiffre" Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="3" Click="BoutonChiffre" Grid.Row="4" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
-                <Button Content="+" Name="Additionner" Click="Bouton_operation" Grid.Row="4" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="1" Click="BoutonChiffre" Grid.Row="5" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="2" Click="BoutonChiffre" Grid.Row="5" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="3" Click="BoutonChiffre" Grid.Row="5" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
+                <Button Content="+" Name="Additionner" Click="Bouton_operation" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
-                <Button Content="04" Click="BoutonChiffre" Grid.Row="5" Grid.Column="0" BorderBrush="Black" Margin="2" Grid.ColumnSpan="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
-                <Button Content="," Click="Button_virgule" Grid.Row="5" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Content="=" Name="Resultat" Click="Button_egal" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2" Background="Coral" BorderThickness="2" FontSize="20"/>
+                <Button Content="04" Click="BoutonChiffre" Grid.Row="6" Grid.Column="0" BorderBrush="Black" Margin="2" Grid.ColumnSpan="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
+                <Button Content="," Click="Button_virgule" Grid.Row="6" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="=" Name="Resultat" Click="Button_egal" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="2" Background="Coral" BorderThickness="2" FontSize="20"/>
 
             </Grid>
         </Border>

@@ -42,7 +42,7 @@ namespace Calculatrice
             op_diviser = Diviser.Name;
             op_rien = "rien";
 
-            Ecran.Text = "0";
+            EcranChiffres.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -53,7 +53,7 @@ namespace Calculatrice
 
         private void ClearZero()
         {
-            Ecran.Text = "";
+            EcranChiffres.Text = "";
 
         }
 
@@ -67,7 +67,7 @@ namespace Calculatrice
         {
 
             nbChiffre++;
-            int TexteLongueur = Ecran.Text.Length;
+            int TexteLongueur = EcranChiffres.Text.Length;
 
             ClearZero();
             if (!virgule)
@@ -77,23 +77,23 @@ namespace Calculatrice
                 nb0++;
                 nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
             }
-            Ecran.Text = nombreCourant.ToString();
+            EcranChiffres.Text = nombreCourant.ToString();
 
             if (chiffre == 0 && nb0 > 0)
             {
-                if (!Ecran.Text.Contains(","))
-                    Ecran.Text += ",";
+                if (!EcranChiffres.Text.Contains(","))
+                    EcranChiffres.Text += ",";
 
 
                 for (int i = 0; i < TexteLongueur - nbChiffre + 1; i++)
-                    Ecran.Text += "0";
+                    EcranChiffres.Text += "0";
             }
         }
 
 
         private void Button_ce(object sender, RoutedEventArgs e)
         {
-            Ecran.Text = "0";
+            EcranChiffres.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -133,7 +133,7 @@ namespace Calculatrice
         private void Virgule()
         {
             if (!virgule)
-                Ecran.Text += ",";
+                EcranChiffres.Text += ",";
             virgule = true;
 
         }
@@ -142,7 +142,7 @@ namespace Calculatrice
         {
             ClearZero();
             nombreCourant = nombreCourant * -1;
-            Ecran.Text = nombreCourant.ToString();
+            EcranChiffres.Text = nombreCourant.ToString();
         }
 
         private void Operation()
@@ -158,7 +158,7 @@ namespace Calculatrice
             else if (operationCourante == op_rien)
                 nombreStocke = nombreCourant;
 
-            Ecran.Text = nombreStocke.ToString();
+            EcranChiffres.Text = nombreStocke.ToString();
             nombreCourant = 0;
         }
 
@@ -169,7 +169,7 @@ namespace Calculatrice
         private void Pourcent()
         {
             nombreCourant *= nombreStocke / 100;
-            Ecran.Text = nombreCourant.ToString();
+            EcranChiffres.Text = nombreCourant.ToString();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
