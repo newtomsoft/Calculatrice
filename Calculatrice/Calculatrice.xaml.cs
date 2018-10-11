@@ -26,12 +26,11 @@ namespace Calculatrice
         private string op_diviser;
         private string op_rien;
 
-        private string sign_plus;
-        private string sign_moins;
-        private string sign_multiplier;
-        private string sign_diviser;
-        private string sign_egal;
-        private string sign_rien;
+        private string symbole_plus;
+        private string symbole_moins;
+        private string symbole_multiplier;
+        private string symbole_diviser;
+        private string symbole_egal;
 
         private double nombreCourant;
         private double nombreStocke;
@@ -48,16 +47,14 @@ namespace Calculatrice
             op_multiplier = Multiplier.Name;
             op_diviser = Diviser.Name;
             op_rien = "rien";
-            sign_plus = "+";
-            sign_moins = "-";
-            sign_multiplier = "x";
-            sign_diviser = "/";
-            sign_rien = "";
-            sign_egal = "=";
+            symbole_plus = "+";
+            symbole_moins = "-";
+            symbole_multiplier = "x";
+            symbole_diviser = "/";
+            symbole_rien = "";
+            symbole_egal = "=";
 
             EcranChiffres.Text = "0";
-
-
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -118,10 +115,10 @@ namespace Calculatrice
             nb0 = 0;
             nbChiffre = 0;
 
-            if (operationCourante == op_plus) EcranOperation.Text = sign_plus;
-            if (operationCourante == op_moins) EcranOperation.Text = sign_moins;
-            if (operationCourante == op_multiplier) EcranOperation.Text = sign_multiplier;
-            if (operationCourante == op_diviser) EcranOperation.Text = sign_diviser;
+            if (operationCourante == op_plus) EcranOperation.Text = symbole_plus;
+            if (operationCourante == op_moins) EcranOperation.Text = symbole_moins;
+            if (operationCourante == op_multiplier) EcranOperation.Text = symbole_multiplier;
+            if (operationCourante == op_diviser) EcranOperation.Text = symbole_diviser;
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
@@ -131,7 +128,7 @@ namespace Calculatrice
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
-            EcranOperation.Text = sign_egal;
+            EcranOperation.Text = symbole_egal;
         }
 
         private void Button_virgule(object sender, RoutedEventArgs e)
@@ -190,7 +187,7 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_plus;
-                EcranOperation.Text = sign_plus;
+                EcranOperation.Text = symbole_plus;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -199,7 +196,7 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_moins;
-                EcranOperation.Text = sign_moins;
+                EcranOperation.Text = symbole_moins;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -208,7 +205,7 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_diviser;
-                EcranOperation.Text = sign_diviser;
+                EcranOperation.Text = symbole_diviser;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -217,7 +214,7 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_multiplier;
-                EcranOperation.Text = sign_multiplier;
+                EcranOperation.Text = symbole_multiplier;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;

@@ -31,7 +31,7 @@
                 <Button Content="CE" Click="Button_ce" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="20" />
                 <Button Content="+/-" Click="Button_plusmoins" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="%" Click="Button_pourcent" Name="pourcent" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Content="/" Click="Bouton_operation" Name="Diviser" Grid.Row="2" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content=":" Click="Bouton_operation" Name="Diviser" Grid.Row="2" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
                 <Button Content="7" Click="BoutonChiffre" Grid.Row="3" Grid.Column="0" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
                 <Button Content="8" Click="BoutonChiffre" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
