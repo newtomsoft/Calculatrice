@@ -161,6 +161,32 @@ namespace Calculatrice
             nombreCourant = 0;
         }
 
+       
+        void AfficheEcranOperation(string s)
+        {
+            EcranOperation.Text = s;
+        }
+        void AfficheEcranChiffres(string s)
+        {
+            EcranChiffres.Text = s;
+        }
+
+        void GestionOperationCourante(string op, string symbole)
+        {
+            operationCourante = op;
+            AfficheEcranOperation(nombreStocke + " " + symbole);
+            AfficheEcranChiffres("0");
+            virgule = false;
+            nb0 = 0;
+            nbChiffre = 0;
+        }
+
+        void OperationAAficher()
+        {
+            operationAAficher = nombreStocke + " " + operationCourante + " " + nombreCourant + " =";
+            AfficheEcranOperation(operationAAficher);
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
@@ -215,31 +241,21 @@ namespace Calculatrice
             {
                 Button_egal(null, null);
             }
+            else if (e.Key == Key.Back)
+            {
+                int longueur = EcranChiffres.Text.Length;
+                if (longueur >= 2)
+                {
+                    EcranChiffres.Text = EcranChiffres.Text.Remove(longueur - 1);
+                    nombreCourant = Double.Parse(EcranChiffres.Text);
+                }
+                else
+                {
+                    EcranChiffres.Text = "0";
+                    nombreCourant = 0;
+                }
+            }
         }
 
-        void AfficheEcranOperation(string s)
-        {
-            EcranOperation.Text = s;
-        }
-        void AfficheEcranChiffres(string s)
-        {
-            EcranChiffres.Text = s;
-        }
-
-        void GestionOperationCourante(string op, string symbole)
-        {
-            operationCourante = op;
-            AfficheEcranOperation(nombreStocke + " " + symbole);
-            AfficheEcranChiffres("0");
-            virgule = false;
-            nb0 = 0;
-            nbChiffre = 0;
-        }
-
-        void OperationAAficher()
-        {
-            operationAAficher = nombreStocke + " " + operationCourante + " " + nombreCourant + " =";
-            AfficheEcranOperation(operationAAficher);
-        }
     }
 }
