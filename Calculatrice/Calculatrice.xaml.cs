@@ -37,6 +37,7 @@ namespace Calculatrice
         private double nombreStocke;
         private string operationCourante;
         private bool virgule;
+        private bool negatif;
         private int nb0;
         private int nbChiffre;
         private string operationAAficher;
@@ -61,6 +62,7 @@ namespace Calculatrice
             nombreStocke = 0;
             operationCourante = op_rien;
             virgule = false;
+            negatif = false;
             nb0 = 0;
             nbChiffre = 0;
         }
@@ -77,11 +79,15 @@ namespace Calculatrice
             int TexteLongueur = EcranChiffres.Text.Length;
 
             if (!virgule)
-                nombreCourant = nombreCourant * 10 + chiffre;
+            {
+                if(!negatif) nombreCourant = nombreCourant * 10 + chiffre;
+                else nombreCourant = nombreCourant * 10 - chiffre;
+            }
             else
             {
                 nb0++;
-                nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
+                if (!negatif) nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
+                else nombreCourant = nombreCourant - chiffre * Math.Pow(10, -nb0);
             }
             EcranChiffres.Text = nombreCourant.ToString();
 
@@ -106,6 +112,21 @@ namespace Calculatrice
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
+        }
+
+        private void BoutonEfface(object sender, RoutedEventArgs e)
+        {
+            int longueur = EcranChiffres.Text.Length;
+            if (longueur >= 2 && EcranChiffres.Text[0]!='-' || longueur >= 3 && EcranChiffres.Text[0] == '-')
+            {
+                EcranChiffres.Text = EcranChiffres.Text.Remove(longueur - 1);
+                nombreCourant = Double.Parse(EcranChiffres.Text);
+            }
+            else
+            {
+                EcranChiffres.Text = "0";
+                nombreCourant = 0;
+            }
         }
 
         private void Bouton_operation(object sender, RoutedEventArgs e)
@@ -140,6 +161,8 @@ namespace Calculatrice
         }
         private void Button_plusmoins(object sender, RoutedEventArgs e)
         {
+            if (negatif) negatif = false;
+            else negatif = true;
             nombreCourant = nombreCourant * -1;
             EcranChiffres.Text = nombreCourant.ToString();
         }
@@ -156,6 +179,7 @@ namespace Calculatrice
                 else if (operationCourante == op_multiplier) nombreStocke *= nombreCourant;
                 else if (operationCourante == op_diviser) nombreStocke /= nombreCourant;
                 else if (operationCourante == op_rien) nombreStocke = Double.Parse(EcranChiffres.Text);
+
 
             EcranChiffres.Text = nombreStocke.ToString();
             nombreCourant = 0;
@@ -243,17 +267,7 @@ namespace Calculatrice
             }
             else if (e.Key == Key.Back)
             {
-                int longueur = EcranChiffres.Text.Length;
-                if (longueur >= 2)
-                {
-                    EcranChiffres.Text = EcranChiffres.Text.Remove(longueur - 1);
-                    nombreCourant = Double.Parse(EcranChiffres.Text);
-                }
-                else
-                {
-                    EcranChiffres.Text = "0";
-                    nombreCourant = 0;
-                }
+                BoutonEfface(null, null);
             }
         }
 
