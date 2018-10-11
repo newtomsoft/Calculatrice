@@ -190,6 +190,7 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_plus;
+                EcranOperation.Text = sign_plus;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -198,18 +199,16 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_moins;
+                EcranOperation.Text = sign_moins;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
-            }
-            if (e.Key == Key.Decimal)
-            {
-                Button_virgule(null, null);
             }
             if (e.Key == Key.Divide)
             {
                 Operation();
                 operationCourante = op_diviser;
+                EcranOperation.Text = sign_diviser;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -218,11 +217,15 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_multiplier;
+                EcranOperation.Text = sign_multiplier;
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
             }
-
+            if (e.Key == Key.Decimal)
+            {
+                Button_virgule(null, null);
+            }
             if (e.Key == Key.Enter)
             {
                 Button_egal(null, null);
