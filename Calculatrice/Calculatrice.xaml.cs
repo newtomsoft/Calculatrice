@@ -26,6 +26,13 @@ namespace Calculatrice
         private string op_diviser;
         private string op_rien;
 
+        private string sign_plus;
+        private string sign_moins;
+        private string sign_multiplier;
+        private string sign_diviser;
+        private string sign_egal;
+        private string sign_rien;
+
         private double nombreCourant;
         private double nombreStocke;
         string operationCourante;
@@ -41,20 +48,22 @@ namespace Calculatrice
             op_multiplier = Multiplier.Name;
             op_diviser = Diviser.Name;
             op_rien = "rien";
+            sign_plus = "+";
+            sign_moins = "-";
+            sign_multiplier = "x";
+            sign_diviser = "/";
+            sign_rien = "";
+            sign_egal = "=";
 
             EcranChiffres.Text = "0";
+
+
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
-        }
-
-        private void ClearZero()
-        {
-            EcranChiffres.Text = "";
-
         }
 
         private void BoutonChiffre(object sender, RoutedEventArgs e)
@@ -69,7 +78,6 @@ namespace Calculatrice
             nbChiffre++;
             int TexteLongueur = EcranChiffres.Text.Length;
 
-            ClearZero();
             if (!virgule)
                 nombreCourant = nombreCourant * 10 + chiffre;
             else
@@ -109,38 +117,32 @@ namespace Calculatrice
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
+
+            if (operationCourante == op_plus) EcranOperation.Text = sign_plus;
+            if (operationCourante == op_moins) EcranOperation.Text = sign_moins;
+            if (operationCourante == op_multiplier) EcranOperation.Text = sign_multiplier;
+            if (operationCourante == op_diviser) EcranOperation.Text = sign_diviser;
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
-        {
-            Egal();
-        }
-
-        private void Egal()
         {
             Operation();
             operationCourante = op_rien;
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
-
+            EcranOperation.Text = sign_egal;
         }
 
         private void Button_virgule(object sender, RoutedEventArgs e)
         {
-            Virgule();
-        }
-        private void Virgule()
-        {
             if (!virgule)
                 EcranChiffres.Text += ",";
             virgule = true;
-
         }
 
         private void Button_plusmoins(object sender, RoutedEventArgs e)
         {
-            ClearZero();
             nombreCourant = nombreCourant * -1;
             EcranChiffres.Text = nombreCourant.ToString();
         }
@@ -178,6 +180,20 @@ namespace Calculatrice
             {
                 Chiffre(e.Key - Key.NumPad0);
             }
+
+            if (e.Key > Key.D0 && e.Key < Key.D9)
+            {
+                Chiffre(e.Key - Key.D0);
+            }
+
+            if (e.Key == Key.Add)
+            {
+                Operation();
+                operationCourante = op_plus;
+                virgule = false;
+                nb0 = 0;
+                nbChiffre = 0;
+            }
             if (e.Key == Key.Subtract)
             {
                 Operation();
@@ -188,7 +204,7 @@ namespace Calculatrice
             }
             if (e.Key == Key.Decimal)
             {
-                Virgule();
+                Button_virgule(null, null);
             }
             if (e.Key == Key.Divide)
             {
@@ -206,17 +222,10 @@ namespace Calculatrice
                 nb0 = 0;
                 nbChiffre = 0;
             }
-            if (e.Key == Key.Add)
-            {
-                Operation();
-                operationCourante = op_plus;
-                virgule = false;
-                nb0 = 0;
-                nbChiffre = 0;
-            }
+
             if (e.Key == Key.Enter)
             {
-                Egal();
+                Button_egal(null, null);
             }
             //if (e.Key == Key.)
         }
