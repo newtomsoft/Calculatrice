@@ -70,7 +70,6 @@ namespace Calculatrice
 
         private void Chiffre(int chiffre)
         {
-
             nbChiffre++;
             int TexteLongueur = EcranChiffres.Text.Length;
 
@@ -94,10 +93,10 @@ namespace Calculatrice
             }
         }
 
-
         private void Button_ce(object sender, RoutedEventArgs e)
         {
-            EcranChiffres.Text = "0";
+            AfficheEcranChiffres("0");
+            AfficheEcranOperation("");
             nombreCourant = 0;
             nombreStocke = 0;
             operationCourante = op_rien;
@@ -119,8 +118,6 @@ namespace Calculatrice
             if (operationCourante == op_multiplier) AfficheEcranOperation(nombreStocke + " " + symbole_multiplier);
             if (operationCourante == op_diviser) AfficheEcranOperation(nombreStocke + " " + symbole_diviser);
             AfficheEcranChiffres("");
-
-
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
@@ -169,12 +166,12 @@ namespace Calculatrice
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key >= Key.NumPad0 && e.Key < Key.NumPad9)
+            if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
             {
                 Chiffre(e.Key - Key.NumPad0);
             }
 
-            if (e.Key > Key.D0 && e.Key < Key.D9)
+            if (e.Key >= Key.D0 && e.Key <= Key.D9)
             {
                 Chiffre(e.Key - Key.D0);
             }
@@ -183,7 +180,10 @@ namespace Calculatrice
             {
                 Button_pourcent(null, null);
             }
-
+            if (e.Key == Key.Home)
+            {
+                Button_ce(null, null);
+            }
 
             if (e.Key == Key.Add)
             {
@@ -234,7 +234,6 @@ namespace Calculatrice
                 Button_egal(null, null);
             }
         }
-
 
         void AfficheEcranOperation(string s)
         {
