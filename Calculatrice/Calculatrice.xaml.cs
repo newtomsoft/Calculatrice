@@ -51,7 +51,6 @@ namespace Calculatrice
             symbole_moins = "-";
             symbole_multiplier = "x";
             symbole_diviser = "/";
-            symbole_rien = "";
             symbole_egal = "=";
 
             EcranChiffres.Text = "0";
@@ -115,10 +114,13 @@ namespace Calculatrice
             nb0 = 0;
             nbChiffre = 0;
 
-            if (operationCourante == op_plus) EcranOperation.Text = symbole_plus;
-            if (operationCourante == op_moins) EcranOperation.Text = symbole_moins;
-            if (operationCourante == op_multiplier) EcranOperation.Text = symbole_multiplier;
-            if (operationCourante == op_diviser) EcranOperation.Text = symbole_diviser;
+            if (operationCourante == op_plus) AfficheEcranOperation(nombreStocke + " " + symbole_plus);
+            if (operationCourante == op_moins) AfficheEcranOperation(nombreStocke + " " + symbole_moins);
+            if (operationCourante == op_multiplier) AfficheEcranOperation(nombreStocke + " " + symbole_multiplier);
+            if (operationCourante == op_diviser) AfficheEcranOperation(nombreStocke + " " + symbole_diviser);
+            AfficheEcranChiffres("");
+
+
         }
 
         private void Button_egal(object sender, RoutedEventArgs e)
@@ -137,10 +139,14 @@ namespace Calculatrice
                 EcranChiffres.Text += ",";
             virgule = true;
         }
-
         private void Button_plusmoins(object sender, RoutedEventArgs e)
         {
             nombreCourant = nombreCourant * -1;
+            EcranChiffres.Text = nombreCourant.ToString();
+        }
+        private void Button_pourcent(object sender, RoutedEventArgs e)
+        {
+            nombreCourant *= nombreStocke / 100;
             EcranChiffres.Text = nombreCourant.ToString();
         }
 
@@ -161,19 +167,9 @@ namespace Calculatrice
             nombreCourant = 0;
         }
 
-        private void Button_pourcent(object sender, RoutedEventArgs e)
-        {
-            Pourcent();
-        }
-        private void Pourcent()
-        {
-            nombreCourant *= nombreStocke / 100;
-            EcranChiffres.Text = nombreCourant.ToString();
-        }
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key > Key.NumPad0 && e.Key < Key.NumPad9)
+            if (e.Key >= Key.NumPad0 && e.Key < Key.NumPad9)
             {
                 Chiffre(e.Key - Key.NumPad0);
             }
@@ -183,11 +179,18 @@ namespace Calculatrice
                 Chiffre(e.Key - Key.D0);
             }
 
+            if (e.Key == Key.Oem3)
+            {
+                Button_pourcent(null, null);
+            }
+
+
             if (e.Key == Key.Add)
             {
                 Operation();
                 operationCourante = op_plus;
-                EcranOperation.Text = symbole_plus;
+                AfficheEcranOperation(nombreStocke + " " + symbole_plus);
+                AfficheEcranChiffres("");
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -196,7 +199,8 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_moins;
-                EcranOperation.Text = symbole_moins;
+                AfficheEcranOperation(nombreStocke + " " + symbole_moins);
+                AfficheEcranChiffres("");
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -205,7 +209,8 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_diviser;
-                EcranOperation.Text = symbole_diviser;
+                AfficheEcranOperation(nombreStocke + " " + symbole_diviser);
+                AfficheEcranChiffres("");
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -214,7 +219,8 @@ namespace Calculatrice
             {
                 Operation();
                 operationCourante = op_multiplier;
-                EcranOperation.Text = symbole_multiplier;
+                AfficheEcranOperation(nombreStocke + " " + symbole_multiplier);
+                AfficheEcranChiffres("");
                 virgule = false;
                 nb0 = 0;
                 nbChiffre = 0;
@@ -227,7 +233,16 @@ namespace Calculatrice
             {
                 Button_egal(null, null);
             }
-            //if (e.Key == Key.)
+        }
+
+
+        void AfficheEcranOperation(string s)
+        {
+            EcranOperation.Text = s;
+        }
+        void AfficheEcranChiffres(string s)
+        {
+            EcranChiffres.Text = s;
         }
 
     }
