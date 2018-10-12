@@ -58,7 +58,7 @@
                 <Button Content="," Click="BoutonVirgule" Grid.Row="7" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="=" Click="BoutonEgal" Name="Resultat" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="2" Background="Coral" BorderThickness="2" FontSize="20" Grid.RowSpan="2"/>
                 <Button Content="x^1/2" Click="BoutonRacine2" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Content="x^y" Click="BoutonOperation" Name="Puissance" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
+                <Button Content="^" Click="BoutonOperation" Name="Puissance" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
             </Grid>
         </Border>

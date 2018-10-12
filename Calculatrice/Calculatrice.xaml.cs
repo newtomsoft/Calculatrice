@@ -25,13 +25,15 @@ namespace Calculatrice
         private string op_moins;
         private string op_multiplier;
         private string op_diviser;
+        private string op_puissance;
         private string op_rien;
-        
+
         private string symbole_plus;
         private string symbole_moins;
         private string symbole_multiplier;
         private string symbole_diviser;
         private string symbole_egal;
+        private string symbole_puissance;
 
         private double nombreCourant;
         private double nombreStocke;
@@ -49,13 +51,15 @@ namespace Calculatrice
             op_moins = Soustraire.Name;
             op_multiplier = Multiplier.Name;
             op_diviser = Diviser.Name;
+            op_puissance = Puissance.Name;
             op_rien = "rien";
 
-            symbole_plus = "+";
-            symbole_moins = "-";
-            symbole_multiplier = "x";
-            symbole_diviser = "/";
-            symbole_egal = "=";
+            symbole_plus = (string)Additionner.Content;
+            symbole_moins = (string)Soustraire.Content;
+            symbole_multiplier = (string)Multiplier.Content;
+            symbole_diviser = (string)Diviser.Content;
+            symbole_egal = (string)Resultat.Content;
+            symbole_puissance = (string)Puissance.Content;
 
             EcranChiffres.Text = "0";
             nombreCourant = 0;
@@ -89,7 +93,7 @@ namespace Calculatrice
 
             if (!virgule)
             {
-                if(!negatif) nombreCourant = nombreCourant * 10 + chiffre;
+                if (!negatif) nombreCourant = nombreCourant * 10 + chiffre;
                 else nombreCourant = nombreCourant * 10 - chiffre;
             }
             else
@@ -126,7 +130,7 @@ namespace Calculatrice
         private void BoutonEfface(object sender, RoutedEventArgs e)
         {
             int longueur = EcranChiffres.Text.Length;
-            if (longueur >= 2 && EcranChiffres.Text[0]!='-' || longueur >= 3 && EcranChiffres.Text[0] == '-')
+            if (longueur >= 2 && EcranChiffres.Text[0] != '-' || longueur >= 3 && EcranChiffres.Text[0] == '-')
             {
                 EcranChiffres.Text = EcranChiffres.Text.Remove(longueur - 1);
                 nombreCourant = Double.Parse(EcranChiffres.Text);
@@ -142,13 +146,13 @@ namespace Calculatrice
         {
             Operation();
 
-            string op = ((Button)sender).Name.ToString();  
-            string symbole="";
+            string op = ((Button)sender).Name.ToString();
+            string symbole = "";
             if (op == op_plus) symbole = symbole_plus;
-            if (op == op_moins) symbole = symbole_moins;
-            if (op == op_multiplier) symbole = symbole_multiplier;
-            if (op == op_diviser) symbole = symbole_diviser;
-
+            else if (op == op_moins) symbole = symbole_moins;
+            else if (op == op_multiplier) symbole = symbole_multiplier;
+            else if (op == op_diviser) symbole = symbole_diviser;
+            else if (op == op_puissance) symbole = symbole_puissance;
             GestionOperationCourante(op, symbole);
         }
 
@@ -183,18 +187,18 @@ namespace Calculatrice
 
         private void Operation()
         {
-                if (operationCourante == op_plus) nombreStocke += nombreCourant;
-                else if (operationCourante == op_moins) nombreStocke -= nombreCourant;
-                else if (operationCourante == op_multiplier) nombreStocke *= nombreCourant;
-                else if (operationCourante == op_diviser) nombreStocke /= nombreCourant;
-                else if (operationCourante == op_rien) nombreStocke = Double.Parse(EcranChiffres.Text);
-
+            if (operationCourante == op_plus) nombreStocke += nombreCourant;
+            else if (operationCourante == op_moins) nombreStocke -= nombreCourant;
+            else if (operationCourante == op_multiplier) nombreStocke *= nombreCourant;
+            else if (operationCourante == op_diviser) nombreStocke /= nombreCourant;
+            else if (operationCourante == op_puissance) nombreStocke = Math.Pow(nombreStocke, nombreCourant);
+            else if (operationCourante == op_rien) nombreStocke = Double.Parse(EcranChiffres.Text);
 
             EcranChiffres.Text = nombreStocke.ToString();
             nombreCourant = 0;
         }
 
-       
+
         void GestionOperationCourante(string op, string symbole)
         {
             operationCourante = op;
@@ -271,12 +275,14 @@ namespace Calculatrice
 
         private void BoutonInverse(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            nombreCourant = 1/nombreCourant;
+            EcranChiffres.Text = nombreCourant.ToString();
         }
 
         private void BoutonRacine2(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            nombreCourant = Math.Pow(nombreCourant, 0.5); ;
+            EcranChiffres.Text = nombreCourant.ToString();
         }
     }
 }
