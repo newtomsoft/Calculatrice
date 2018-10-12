@@ -49,7 +49,8 @@
                 <Button Content="3" Click="BoutonChiffre" Grid.Row="5" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
                 <Button Content="+" Click="Bouton_operation" Name="Additionner" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
-                <Button Content="0" Click="BoutonChiffre" Grid.Row="6" Grid.Column="0" BorderBrush="Black" Margin="2" Grid.ColumnSpan="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
+                <Button Content="Suppr" Click="BoutonEfface" Grid.Row="6" Grid.Column="0" BorderBrush="Black" Margin="2" Background="Aqua" BorderThickness="2"  FontSize="20"/>
+                <Button Content="0" Click="BoutonChiffre" Grid.Row="6" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>
                 <Button Content="," Click="Button_virgule" Grid.Row="6" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="=" Click="Button_egal" Name="Resultat" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="2" Background="Coral" BorderThickness="2" FontSize="20"/>
 
