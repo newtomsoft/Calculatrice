@@ -111,7 +111,7 @@ namespace Calculatrice
             }
         }
 
-        private void Button_ce(object sender, RoutedEventArgs e)
+        private void BoutonCe(object sender, RoutedEventArgs e)
         {
             AfficheEcranChiffres("0");
             AfficheEcranOperation("");
@@ -138,7 +138,7 @@ namespace Calculatrice
             }
         }
 
-        private void Bouton_operation(object sender, RoutedEventArgs e)
+        private void BoutonOperation(object sender, RoutedEventArgs e)
         {
             Operation();
 
@@ -152,7 +152,7 @@ namespace Calculatrice
             GestionOperationCourante(op, symbole);
         }
 
-        private void Button_egal(object sender, RoutedEventArgs e)
+        private void BoutonEgal(object sender, RoutedEventArgs e)
         {
             Operation();
             operationCourante = op_rien;
@@ -162,20 +162,20 @@ namespace Calculatrice
             EcranOperation.Text = symbole_egal;
         }
 
-        private void Button_virgule(object sender, RoutedEventArgs e)
+        private void BoutonVirgule(object sender, RoutedEventArgs e)
         {
             if (!virgule)
                 EcranChiffres.Text += ",";
             virgule = true;
         }
-        private void Button_plusmoins(object sender, RoutedEventArgs e)
+        private void BoutonPlusMoins(object sender, RoutedEventArgs e)
         {
             if (negatif) negatif = false;
             else negatif = true;
             nombreCourant = nombreCourant * -1;
             EcranChiffres.Text = nombreCourant.ToString();
         }
-        private void Button_pourcent(object sender, RoutedEventArgs e)
+        private void BoutonPourcent(object sender, RoutedEventArgs e)
         {
             nombreCourant *= nombreStocke / 100;
             EcranChiffres.Text = nombreCourant.ToString();
@@ -195,15 +195,6 @@ namespace Calculatrice
         }
 
        
-        void AfficheEcranOperation(string s)
-        {
-            EcranOperation.Text = s;
-        }
-        void AfficheEcranChiffres(string s)
-        {
-            EcranChiffres.Text = s;
-        }
-
         void GestionOperationCourante(string op, string symbole)
         {
             operationCourante = op;
@@ -232,11 +223,11 @@ namespace Calculatrice
             }
             else if (e.Key == Key.Oem3)
             {
-                Button_pourcent(null, null);
+                BoutonPourcent(null, null);
             }
             else if (e.Key == Key.Home)
             {
-                Button_ce(null, null);
+                BoutonCe(null, null);
             }
             else if (e.Key == Key.Add)
             {
@@ -265,11 +256,11 @@ namespace Calculatrice
             }
             else if (e.Key == Key.Decimal)
             {
-                Button_virgule(null, null);
+                BoutonVirgule(null, null);
             }
             else if (e.Key == Key.Enter)
             {
-                Button_egal(null, null);
+                BoutonEgal(null, null);
             }
             else if (e.Key == Key.Back)
             {
@@ -277,8 +268,15 @@ namespace Calculatrice
             }
         }
 
-        
 
-        
+        private void BoutonInverse(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BoutonRacine2(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
