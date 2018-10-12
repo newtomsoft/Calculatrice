@@ -62,6 +62,15 @@ namespace Calculatrice
             nbChiffre = 0;
         }
 
+        void AfficheEcranOperation(string s)
+        {
+            EcranOperation.Text = s;
+        }
+        void AfficheEcranChiffres(string s)
+        {
+            EcranChiffres.Text = s;
+        }
+
         private void BoutonChiffre(object sender, RoutedEventArgs e)
         {
             int chiffre = Int32.Parse(((Button)sender).Content.ToString());
@@ -80,7 +89,7 @@ namespace Calculatrice
                 nb0++;
                 nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
             }
-            EcranChiffres.Text = nombreCourant.ToString();
+            AfficheEcranChiffres(nombreCourant.ToString());
 
             if (chiffre == 0 && nb0 > 0)
             {
@@ -158,18 +167,26 @@ namespace Calculatrice
             nombreCourant = 0;
         }
 
+        void GestionOperationCourante(string op, string symbole)
+        {
+            operationCourante = op;
+            AfficheEcranOperation(nombreStocke + " " + symbole);
+            AfficheEcranChiffres("0");
+            virgule = false;
+            nb0 = 0;
+            nbChiffre = 0;
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
             {
                 Chiffre(e.Key - Key.NumPad0);
             }
-
             else if (e.Key >= Key.D0 && e.Key <= Key.D9)
             {
                 Chiffre(e.Key - Key.D0);
             }
-
             else if (e.Key == Key.Oem3)
             {
                 Button_pourcent(null, null);
@@ -178,7 +195,6 @@ namespace Calculatrice
             {
                 Button_ce(null, null);
             }
-
             else if (e.Key == Key.Add)
             {
                 Operation();
@@ -214,23 +230,8 @@ namespace Calculatrice
             }
         }
 
-        void AfficheEcranOperation(string s)
-        {
-            EcranOperation.Text = s;
-        }
-        void AfficheEcranChiffres(string s)
-        {
-            EcranChiffres.Text = s;
-        }
+        
 
-        void GestionOperationCourante(string op, string symbole)
-        {
-            operationCourante = op;
-            AfficheEcranOperation(nombreStocke + " " + symbole);
-            AfficheEcranChiffres("0");
-            virgule = false;
-            nb0 = 0;
-            nbChiffre = 0;
-        }
+        
     }
 }

@@ -27,7 +27,8 @@
 
                 <TextBox Name="EcranOperation" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="25" TextAlignment="Right"/>
                 <TextBox Name="EcranChiffres" Text="0" Grid.Row="1"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="50" TextAlignment="Right"/>
-                
+                <!--<TextBox Name="EcranChiffres" Text="0" Grid.Row="1"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType="{x:type Window} }, Path=Height"  TextAlignment="Right"/>-->
+
                 <Button Content="CE" Click="Button_ce" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="20" />
                 <Button Content="+/-" Click="Button_plusmoins" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="%" Click="Button_pourcent" Name="pourcent" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
