@@ -153,6 +153,7 @@ namespace Calculatrice
             else if (op == op_multiplier) symbole = symbole_multiplier;
             else if (op == op_diviser) symbole = symbole_diviser;
             else if (op == op_puissance) symbole = symbole_puissance;
+
             GestionOperationCourante(op, symbole);
         }
 
@@ -195,7 +196,7 @@ namespace Calculatrice
 
         private void BoutonRacine2(object sender, RoutedEventArgs e)
         {
-            nombreCourant = Math.Pow(nombreCourant, 0.5); ;
+            nombreCourant = Math.Sqrt(nombreCourant); ;
             EcranChiffres.Text = nombreCourant.ToString();
         }
 
@@ -229,7 +230,7 @@ namespace Calculatrice
             AfficheEcranOperation(operationAAficher);
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void ToucheClavier(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
             {
