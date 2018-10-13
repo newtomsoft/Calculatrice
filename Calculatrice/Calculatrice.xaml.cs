@@ -172,6 +172,7 @@ namespace Calculatrice
                 EcranChiffres.Text += ",";
             virgule = true;
         }
+
         private void BoutonPlusMoins(object sender, RoutedEventArgs e)
         {
             if (negatif) negatif = false;
@@ -179,9 +180,22 @@ namespace Calculatrice
             nombreCourant = nombreCourant * -1;
             EcranChiffres.Text = nombreCourant.ToString();
         }
+
         private void BoutonPourcent(object sender, RoutedEventArgs e)
         {
             nombreCourant *= nombreStocke / 100;
+            EcranChiffres.Text = nombreCourant.ToString();
+        }
+
+        private void BoutonInverse(object sender, RoutedEventArgs e)
+        {
+            nombreCourant = 1 / nombreCourant;
+            EcranChiffres.Text = nombreCourant.ToString();
+        }
+
+        private void BoutonRacine2(object sender, RoutedEventArgs e)
+        {
+            nombreCourant = Math.Pow(nombreCourant, 0.5); ;
             EcranChiffres.Text = nombreCourant.ToString();
         }
 
@@ -270,19 +284,6 @@ namespace Calculatrice
             {
                 BoutonEfface(null, null);
             }
-        }
-
-
-        private void BoutonInverse(object sender, RoutedEventArgs e)
-        {
-            nombreCourant = 1/nombreCourant;
-            EcranChiffres.Text = nombreCourant.ToString();
-        }
-
-        private void BoutonRacine2(object sender, RoutedEventArgs e)
-        {
-            nombreCourant = Math.Pow(nombreCourant, 0.5); ;
-            EcranChiffres.Text = nombreCourant.ToString();
         }
     }
 }
