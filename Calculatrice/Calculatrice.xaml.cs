@@ -286,5 +286,15 @@ namespace Calculatrice
                 BoutonEfface(null, null);
             }
         }
+
+        private void EcranChiffreClicDroit(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("clic droit non encore implémenté");
+        }
+
+        private void Resultat_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("clic droit non encore implémenté");
+        }
     }
 }
