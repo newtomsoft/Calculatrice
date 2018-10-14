@@ -127,6 +127,15 @@ namespace Calculatrice
             nbChiffre = 0;
         }
 
+        private void BoutonC(object sender, RoutedEventArgs e)
+        {
+            AfficheEcranChiffres("0");
+            nombreCourant = 0;
+            virgule = false;
+            nb0 = 0;
+            nbChiffre = 0;
+        }
+
         private void BoutonEfface(object sender, RoutedEventArgs e)
         {
             int longueur = EcranChiffres.Text.Length;
@@ -292,7 +301,7 @@ namespace Calculatrice
             MessageBox.Show("clic droit non encore implémenté");
         }
 
-        private void Resultat_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void EgalClicDroit(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("clic droit non encore implémenté");
         }
