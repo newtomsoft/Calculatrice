@@ -58,7 +58,7 @@
                 <!--<Button Content="&#9669;" Click="BoutonEfface" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Margin="2" Background="Aqua" BorderThickness="2"  FontSize="18"/>-->
 
                 <Button Content="%" Click="BoutonPourcent" Name="pourcent" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
-                <Button Content="+/-" Click="BoutonPlusMoins" Grid.Row="7" Grid.Column="0" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="18"/>
+                <Button Content="&#8723;" Click="BoutonPlusMoins" Grid.Row="7" Grid.Column="0" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="18"/>
             </Grid>
         </Border>
     </Grid>
