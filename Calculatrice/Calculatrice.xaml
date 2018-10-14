@@ -45,7 +45,7 @@
                 <Button Content="+" Click="BoutonOperation" Name="Additionner" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
                 <Button Content="-" Click="BoutonOperation" Name="Soustraire" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
                 <Button Content="x" Click="BoutonOperation" Name="Multiplier" Grid.Row="4" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
-                <Button Content=":" Click="BoutonOperation" Name="Diviser" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
+                <Button Content="&#247;" Click="BoutonOperation" Name="Diviser" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
                 <Button Content="^" Click="BoutonOperation" Name="Puissance" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
                 <Button Content="&#8730;" Click="BoutonRacine2" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>

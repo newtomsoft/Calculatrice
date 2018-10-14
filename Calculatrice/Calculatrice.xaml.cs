@@ -105,6 +105,7 @@ namespace Calculatrice
             nombreStocke = 0;
             operationCourante = TypeOperation.Aucune;
             virgule = false;
+            negatif = false;
             nb0 = 0;
             nbChiffre = 0;
         }
