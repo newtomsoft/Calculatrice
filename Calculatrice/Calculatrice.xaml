@@ -26,8 +26,8 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="EcranOperation" IsEnabled="False" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="25" TextAlignment="Right"/>
-                <TextBox Name="EcranChiffres" IsEnabled="False" Text="0" Grid.Row="1"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="50" TextAlignment="Right" MouseRightButtonDown="EcranChiffreClicDroit"/>
+                <TextBox Name="EcranOperation" IsReadOnly="True" Text="" Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="25" TextAlignment="Right"/>
+                <TextBox Name="EcranChiffres" IsReadOnly="True" Text="0" Grid.Row="1"  Grid.ColumnSpan="4" BorderBrush="Black" Background="WhiteSmoke" BorderThickness="0" FontSize="50" TextAlignment="Right" MouseRightButtonDown="EcranChiffreClicDroit"/>
 
                 <Button Content="," Click="BoutonVirgule" Grid.Row="7" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="0" Click="BoutonChiffre" Grid.Row="7" Grid.Column="1" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2"  FontSize="20"/>

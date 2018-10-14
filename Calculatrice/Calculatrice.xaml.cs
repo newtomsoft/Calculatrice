@@ -293,9 +293,8 @@ namespace Calculatrice
             }
             else if (e.Key == Key.C && toucheCtrl)
             {
-                MessageBox.Show("touche C pressée");
+                Clipboard.SetData(DataFormats.Text, (Object)nombreCourant);
                 toucheCtrl = false;
-
             }
         }
 
@@ -306,7 +305,7 @@ namespace Calculatrice
 
         private void EgalClicDroit(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("clic droit non encore implémenté");
+            MessageBox.Show("Donne le résultat de l'opération");
         }
 
 
