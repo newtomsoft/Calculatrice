@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using @enum;
 
 namespace Calculatrice
 {
@@ -21,23 +22,16 @@ namespace Calculatrice
     /// </summary>
     public partial class Calc : Window
     {
-        private string op_plus;
-        private string op_moins;
-        private string op_multiplier;
-        private string op_diviser;
-        private string op_puissance;
-        private string op_rien;
-
-        private string symbole_plus;
-        private string symbole_moins;
-        private string symbole_multiplier;
-        private string symbole_diviser;
-        private string symbole_egal;
-        private string symbole_puissance;
+        private const string symbole_plus = "+";
+        private const string symbole_moins = "-";
+        private const string symbole_multiplier = "x";
+        private const string symbole_diviser = ":";
+        private const string symbole_egal = "=";
+        private const string symbole_puissance = "^";
 
         private double nombreCourant;
         private double nombreStocke;
-        private string operationCourante;
+        private TypeOperation operationCourante;
         private bool virgule;
         private bool negatif;
         private int nb0;
@@ -47,24 +41,11 @@ namespace Calculatrice
         public Calc()
         {
             InitializeComponent();
-            op_plus = Additionner.Name;
-            op_moins = Soustraire.Name;
-            op_multiplier = Multiplier.Name;
-            op_diviser = Diviser.Name;
-            op_puissance = Puissance.Name;
-            op_rien = "rien";
-
-            symbole_plus = (string)Additionner.Content;
-            symbole_moins = (string)Soustraire.Content;
-            symbole_multiplier = (string)Multiplier.Content;
-            symbole_diviser = (string)Diviser.Content;
-            symbole_egal = (string)Resultat.Content;
-            symbole_puissance = (string)Puissance.Content;
 
             EcranChiffres.Text = "0";
             nombreCourant = 0;
             nombreStocke = 0;
-            operationCourante = op_rien;
+            operationCourante = TypeOperation.Aucune;
             virgule = false;
             negatif = false;
             nb0 = 0;
@@ -121,7 +102,7 @@ namespace Calculatrice
             AfficheEcranOperation("");
             nombreCourant = 0;
             nombreStocke = 0;
-            operationCourante = op_rien;
+            operationCourante = TypeOperation.Aucune;
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
@@ -157,19 +138,39 @@ namespace Calculatrice
 
             string op = ((Button)sender).Name.ToString();
             string symbole = "";
-            if (op == op_plus) symbole = symbole_plus;
-            else if (op == op_moins) symbole = symbole_moins;
-            else if (op == op_multiplier) symbole = symbole_multiplier;
-            else if (op == op_diviser) symbole = symbole_diviser;
-            else if (op == op_puissance) symbole = symbole_puissance;
+            if (op == Additionner.Name)
+            {
+                symbole = symbole_plus;
+                GestionOperationCourante(TypeOperation.Addition, symbole);
+            }
+            else if (op == Soustraire.Name)
+            {
+                symbole = symbole_moins;
+                GestionOperationCourante(TypeOperation.Soustraction, symbole);
+            }
+            else if (op == Multiplier.Name)
+            {
+                symbole = symbole_multiplier;
+                GestionOperationCourante(TypeOperation.Multiplication, symbole);
+            }
+            else if (op == Diviser.Name)
+            {
+                symbole = symbole_diviser;
+                GestionOperationCourante(TypeOperation.Division, symbole);
+            }
+            else if (op == Puissance.Name)
+            {
+                symbole = symbole_puissance;
+                GestionOperationCourante(TypeOperation.Puissance, symbole);
+            }
 
-            GestionOperationCourante(op, symbole);
+            
         }
 
         private void BoutonEgal(object sender, RoutedEventArgs e)
         {
             Operation();
-            operationCourante = op_rien;
+            operationCourante = TypeOperation.Aucune;
             virgule = false;
             nb0 = 0;
             nbChiffre = 0;
@@ -211,19 +212,19 @@ namespace Calculatrice
 
         private void Operation()
         {
-            if (operationCourante == op_plus) nombreStocke += nombreCourant;
-            else if (operationCourante == op_moins) nombreStocke -= nombreCourant;
-            else if (operationCourante == op_multiplier) nombreStocke *= nombreCourant;
-            else if (operationCourante == op_diviser) nombreStocke /= nombreCourant;
-            else if (operationCourante == op_puissance) nombreStocke = Math.Pow(nombreStocke, nombreCourant);
-            else if (operationCourante == op_rien) nombreStocke = Double.Parse(EcranChiffres.Text);
+            if (operationCourante == TypeOperation.Addition) nombreStocke += nombreCourant;
+            else if (operationCourante == TypeOperation.Soustraction) nombreStocke -= nombreCourant;
+            else if (operationCourante == TypeOperation.Multiplication) nombreStocke *= nombreCourant;
+            else if (operationCourante == TypeOperation.Division) nombreStocke /= nombreCourant;
+            else if (operationCourante == TypeOperation.Puissance) nombreStocke = Math.Pow(nombreStocke, nombreCourant);
+            else if (operationCourante == TypeOperation.Aucune) nombreStocke = Double.Parse(EcranChiffres.Text);
 
             EcranChiffres.Text = nombreStocke.ToString();
             nombreCourant = 0;
         }
 
 
-        void GestionOperationCourante(string op, string symbole)
+        void GestionOperationCourante(TypeOperation op, string symbole)
         {
             operationCourante = op;
             AfficheEcranOperation(nombreStocke + " " + symbole);
@@ -260,27 +261,22 @@ namespace Calculatrice
             else if (e.Key == Key.Add)
             {
                 Operation();
-                operationCourante = op_plus;
-                AfficheEcranOperation(nombreStocke + " " + symbole_plus);
-                AfficheEcranChiffres("0");
-                virgule = false;
-                nb0 = 0;
-                nbChiffre = 0;
+                GestionOperationCourante(TypeOperation.Addition, symbole_plus);
             }
             else if (e.Key == Key.Subtract)
             {
                 Operation();
-                GestionOperationCourante(op_moins, symbole_moins);
+                GestionOperationCourante(TypeOperation.Soustraction, symbole_moins);
             }
             else if (e.Key == Key.Divide)
             {
                 Operation();
-                GestionOperationCourante(op_diviser, symbole_diviser);
+                GestionOperationCourante(TypeOperation.Division, symbole_diviser);
             }
             else if (e.Key == Key.Multiply)
             {
                 Operation();
-                GestionOperationCourante(op_multiplier, symbole_multiplier);
+                GestionOperationCourante(TypeOperation.Multiplication, symbole_multiplier);
             }
             else if (e.Key == Key.Decimal)
             {

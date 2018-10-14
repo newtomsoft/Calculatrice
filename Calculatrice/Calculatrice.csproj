@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TypeOperation.cs" />
     <Page Include="Calculatrice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
