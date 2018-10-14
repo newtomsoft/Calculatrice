@@ -37,6 +37,7 @@ namespace Calculatrice
         private int nb0;
         private int nbChiffre;
         private string operationAAficher;
+        private bool toucheCtrl = false;
 
         public Calc()
         {
@@ -164,7 +165,7 @@ namespace Calculatrice
                 GestionOperationCourante(TypeOperation.Puissance, symbole);
             }
 
-            
+
         }
 
         private void BoutonEgal(object sender, RoutedEventArgs e)
@@ -290,6 +291,12 @@ namespace Calculatrice
             {
                 BoutonEfface(null, null);
             }
+            else if (e.Key == Key.C && toucheCtrl)
+            {
+                MessageBox.Show("touche C pressée");
+                toucheCtrl = false;
+
+            }
         }
 
         private void EcranChiffreClicDroit(object sender, MouseButtonEventArgs e)
@@ -300,6 +307,22 @@ namespace Calculatrice
         private void EgalClicDroit(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("clic droit non encore implémenté");
+        }
+
+
+        private void IncremantCommand()
+        { }
+
+        private void Calc_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+                toucheCtrl = true;
+        }
+
+        private void Calc_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+                toucheCtrl = false;
         }
     }
 }

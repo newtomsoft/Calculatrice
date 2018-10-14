@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="Calc by Tom &amp; Mag" Height="480" Width="320" KeyDown="ToucheClavier">
+        Title="Calc by Tom &amp; Mag" Height="480" Width="320" KeyDown="ToucheClavier" KeyUp="Calc_OnKeyUp" PreviewKeyDown="Calc_OnPreviewKeyDown">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Margin="10" >
             <Grid>
