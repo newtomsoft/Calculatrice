@@ -42,9 +42,9 @@
                 <Button Content="9" Click="BoutonChiffre" Grid.Row="4" Grid.Column="2" BorderBrush="Black" Margin="2" Background="BlanchedAlmond" BorderThickness="2" FontSize="20"/>
 
                 <Button Content="=" Click="BoutonEgal" Name="Resultat" Grid.Row="7" Grid.Column="3" BorderBrush="Black" Margin="2" Background="Coral" BorderThickness="2" FontSize="24" MouseRightButtonDown="EgalClicDroit"/>
-                <Button Content="+" Click="BoutonOperation" Name="Additionner" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="0,2,4,2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
-                <Button Content="-" Click="BoutonOperation" Name="Soustraire" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2,2,2,1" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
-                <Button Content="x" Click="BoutonOperation" Name="Multiplier" Grid.Row="4" Grid.Column="3" BorderBrush="Black" Margin="2,2,2,3" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
+                <Button Content="+" Click="BoutonOperation" Name="Additionner" Grid.Row="6" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
+                <Button Content="-" Click="BoutonOperation" Name="Soustraire" Grid.Row="5" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
+                <Button Content="x" Click="BoutonOperation" Name="Multiplier" Grid.Row="4" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
                 <Button Content=":" Click="BoutonOperation" Name="Diviser" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="24"/>
                 <Button Content="^" Click="BoutonOperation" Name="Puissance" Grid.Row="2" Grid.Column="2" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
 
@@ -55,6 +55,7 @@
                 <Button Content="C" Click="BoutonC" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="2"  Background="Aqua" BorderThickness="2" FontSize="18" />
 
                 <Button Content="&#11013;" Click="BoutonEfface" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Margin="2" Background="Aqua" BorderThickness="2"  FontSize="18"/>
+                <!--<Button Content="&#9669;" Click="BoutonEfface" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Margin="2" Background="Aqua" BorderThickness="2"  FontSize="18"/>-->
 
                 <Button Content="%" Click="BoutonPourcent" Name="pourcent" Grid.Row="2" Grid.Column="0" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="20"/>
                 <Button Content="+/-" Click="BoutonPlusMoins" Grid.Row="7" Grid.Column="0" BorderBrush="Black" Margin="2" Background="PaleGreen" BorderThickness="2" FontSize="18"/>
