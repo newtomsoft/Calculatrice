@@ -7,6 +7,7 @@
         Soustraction,
         Multiplication,
         Division,
-        Puissance
+        Puissance,
+        Egal = 100
     }
 }

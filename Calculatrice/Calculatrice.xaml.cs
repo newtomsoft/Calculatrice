@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using @enum;
 
 namespace Calculatrice
@@ -35,7 +24,7 @@ namespace Calculatrice
         private bool virgule;
         private bool negatif;
         private int nb0;
-        private int nbChiffre;
+        private int nbChiffres = 0;
         private string operationAAficher;
         private bool toucheCtrl = false;
 
@@ -50,12 +39,14 @@ namespace Calculatrice
             virgule = false;
             negatif = false;
             nb0 = 0;
-            nbChiffre = 0;
+            nbChiffres = 0;
         }
 
         void AfficheEcranOperation(string s)
         {
             EcranOperation.Text = s;
+           
+
         }
         void AfficheEcranChiffres(string s)
         {
@@ -70,7 +61,10 @@ namespace Calculatrice
 
         private void Chiffre(int chiffre)
         {
-            nbChiffre++;
+            nbChiffres++;
+            int longueurNombreCourant = 0;
+            string nbcourantstring;
+
             int TexteLongueur = EcranChiffres.Text.Length;
 
             if (!virgule)
@@ -84,16 +78,24 @@ namespace Calculatrice
                 if (!negatif) nombreCourant = nombreCourant + chiffre * Math.Pow(10, -nb0);
                 else nombreCourant = nombreCourant - chiffre * Math.Pow(10, -nb0);
             }
+
+
             AfficheEcranChiffres(nombreCourant.ToString());
 
-            if (chiffre == 0 && nb0 > 0)
+            if (virgule)
             {
-                if (!EcranChiffres.Text.Contains(","))
-                    EcranChiffres.Text += ",";
+                if (chiffre == 0)
+                {
+                    if (!EcranChiffres.Text.Contains(","))
+                        EcranChiffres.Text += ",";
+                }
 
+                nbcourantstring = nombreCourant.ToString();
+                longueurNombreCourant = nbcourantstring.Length;
 
-                for (int i = 0; i < TexteLongueur - nbChiffre + 1; i++)
+                for (int i = longueurNombreCourant; i <= nbChiffres; i++)
                     EcranChiffres.Text += "0";
+
             }
         }
 
@@ -107,7 +109,7 @@ namespace Calculatrice
             virgule = false;
             negatif = false;
             nb0 = 0;
-            nbChiffre = 0;
+            nbChiffres = 0;
         }
 
         private void BoutonC(object sender, RoutedEventArgs e)
@@ -116,28 +118,58 @@ namespace Calculatrice
             nombreCourant = 0;
             virgule = false;
             nb0 = 0;
-            nbChiffre = 0;
+            nbChiffres = 0;
         }
 
         private void BoutonEfface(object sender, RoutedEventArgs e)
         {
             int longueur = EcranChiffres.Text.Length;
+            nb0--;
+            if (nb0 < 0) nb0 = 0;
+
             if (longueur >= 2 && EcranChiffres.Text[0] != '-' || longueur >= 3 && EcranChiffres.Text[0] == '-')
             {
                 EcranChiffres.Text = EcranChiffres.Text.Remove(longueur - 1);
                 nombreCourant = Double.Parse(EcranChiffres.Text);
+
+                if (!virgule)
+                {
+                    nbChiffres--;
+                }
+                else
+                {
+
+                    int partieEntiere = (int)nombreCourant;
+                    string stringPartieEntiere = partieEntiere.ToString();
+                    if (partieEntiere == nombreCourant && EcranChiffres.Text == stringPartieEntiere) // virgule effacée 
+                    {
+                        virgule = false;
+                        nbChiffres = partieEntiere.ToString().Length;
+
+                    }
+                    else
+                    {
+                        virgule = true;
+                        nbChiffres--;
+                    }
+                }
+
+
+
             }
             else
             {
                 EcranChiffres.Text = "0";
                 nombreCourant = 0;
+                nbChiffres = 0;
+                virgule = false;
             }
         }
 
         private void BoutonOperation(object sender, RoutedEventArgs e)
         {
             Operation();
-
+            nbChiffres = 0;
             string op = ((Button)sender).Name.ToString();
             string symbole = "";
             if (op == Additionner.Name)
@@ -175,8 +207,9 @@ namespace Calculatrice
             operationCourante = TypeOperation.Aucune;
             virgule = false;
             nb0 = 0;
-            nbChiffre = 0;
+            nbChiffres = 0;
             EcranOperation.Text = symbole_egal;
+            nombreCourant = nombreStocke;
         }
 
         private void BoutonVirgule(object sender, RoutedEventArgs e)
@@ -222,7 +255,7 @@ namespace Calculatrice
             else if (operationCourante == TypeOperation.Aucune) nombreStocke = Double.Parse(EcranChiffres.Text);
 
             EcranChiffres.Text = nombreStocke.ToString();
-            nombreCourant = 0;
+            nombreCourant = 0; //TODO
         }
 
 
@@ -230,10 +263,11 @@ namespace Calculatrice
         {
             operationCourante = op;
             AfficheEcranOperation(nombreStocke + " " + symbole);
+            if (operationCourante == TypeOperation.Aucune) AfficheEcranOperation(nombreStocke + " " + symbole + " " + nombreCourant);
             AfficheEcranChiffres("0");
             virgule = false;
             nb0 = 0;
-            nbChiffre = 0;
+            nbChiffres = 0;
         }
 
         void OperationAAficher()
